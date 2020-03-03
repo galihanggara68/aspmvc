@@ -1,0 +1,22 @@
+﻿@model FirstMVC.Models.Person
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+</head>
+<body>
+    @using(Html.BeginForm("form", "First", FormMethod.Post))
+    {
+        @Html.TextBox("Name", null, new { placeholder = "Name", @class = "form-control" })
+        @Html.TextBox("Address", null, new { placeholder = "Address", onclick = "alert('Hello')" })
+        <button type="submit">Post Data</button>
+    }
+</body>
+</html>

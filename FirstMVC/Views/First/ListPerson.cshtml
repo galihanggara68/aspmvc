@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FirstMVC.Models.Person>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListPerson</title>
+</head>
+<body>
+    @TempData.Peek("temp")
+    <table border="1">
+        <thead>
+            <tr>
+                <th colspan="2">Persons</th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+        </thead> 
+        <tbody>
+            @foreach(var person in Model)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.Address</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Count : </th>
+                <th>@Model.Count()</th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

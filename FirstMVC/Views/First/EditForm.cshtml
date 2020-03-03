@@ -1,0 +1,22 @@
+﻿@model FirstMVC.Models.Person
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form Edit</title>
+</head>
+<body>
+    <form method="post" action="~/edit"> 
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input type="text" name="Name" placeholder="Name" value="@Model.Name"/>
+        <input type="text" name="Address" placeholder="Address" value="@Model.Address" />
+        <button type="submit">Post Data</button>
+    </form>
+</body>
+</html>
