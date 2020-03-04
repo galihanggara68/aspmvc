@@ -62,5 +62,35 @@ namespace FirstMVC.Controllers
                 return Redirect("~/employees");
             }
         }
+
+        [HttpGet]
+        [Route("employees/{employeeId}/edit")]
+        public ActionResult FormEdit(int employeeId)
+        {
+            using(HREntities hr = new HREntities())
+            {
+                var employee = hr.COPY_EMP.Find(employeeId);
+                return View(employee);
+            }
+        }
+
+        [HttpPost]
+        [Route("employees/{id}/edit")]
+        public ActionResult UpdateEmployee(int id, COPY_EMP employee)
+        {
+            using(HREntities hr = new HREntities())
+            {
+                var currentEmployee = hr.COPY_EMP.Find(id);
+                currentEmployee.FIRST_NAME = employee.FIRST_NAME;
+                currentEmployee.LAST_NAME = employee.LAST_NAME;
+                currentEmployee.EMAIL = employee.EMAIL;
+                currentEmployee.HIRE_DATE = employee.HIRE_DATE;
+                currentEmployee.PHONE_NUMBER = employee.PHONE_NUMBER;
+                currentEmployee.SALARY = employee.SALARY;
+
+                hr.SaveChanges();
+                return Redirect("~/employees");
+            }
+        }
     }
 }
