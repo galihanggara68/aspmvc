@@ -178,7 +178,11 @@ namespace FirstMVC.Controllers
         [Route("form")]
         public ActionResult PostForm(Person person)
         {
-            return View("WithModel", person);
+            if(ModelState.IsValid)
+            {
+                return View("WithModel", person);
+            }
+            return View("Form");
         }
     }
 }
