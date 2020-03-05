@@ -40,14 +40,27 @@ namespace FirstMVC.Controllers
 
         [HttpPost]
         [Route("employees/add")]
-        public ActionResult PostEmployee(COPY_EMP emp)
+        public ActionResult PostEmployee(EmployeeDTO emp)
         {
-            using(HREntities hr = new HREntities())
+            if(ModelState.IsValid)
             {
-                hr.COPY_EMP.Add(emp);
-                hr.SaveChanges();
-                return Redirect("~/employees");
+                using(HREntities hr = new HREntities())
+                {
+                    COPY_EMP newEmployee = new COPY_EMP()
+                    {
+                        EMPLOYEE_ID = emp.EmployeeId,
+                        FIRST_NAME = emp.FirstName,
+                        LAST_NAME = emp.LastName,
+                        EMAIL = emp.Email,
+                        PHONE_NUMBER = emp.PhoneNumber,
+                        HIRE_DATE = emp.HiredDate
+                    };
+                    hr.COPY_EMP.Add(newEmployee);
+                    hr.SaveChanges();
+                    return Redirect("~/employees");
+                }
             }
+            return View("EmployeeForm");
         }
 
         [HttpGet]
