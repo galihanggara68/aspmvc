@@ -139,6 +139,7 @@
     <Compile Include="Models\COPY_EMP.cs">
       <DependentUpon>HR.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeDTO.cs" />
     <Compile Include="Models\HR.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
