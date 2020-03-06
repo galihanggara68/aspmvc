@@ -1,10 +1,13 @@
 ﻿using FirstMVC.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace FirstMVC.Controllers
 {
@@ -183,6 +186,26 @@ namespace FirstMVC.Controllers
                 return View("WithModel", person);
             }
             return View("Form");
+        }
+
+
+        [HttpGet]
+        [Route("getperson")]
+        public ActionResult GetPerson()
+        {
+            using(HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:61345");
+                var get = client.GetAsync("/person");
+                get.Wait();
+                var result = get.Result;
+                var data = result.Content.ReadAsStringAsync();
+                data.Wait();
+                var personJson = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(data.Result);
+                Person person = new Person() { Name = personJson["Name"], Address = personJson["Address"] };
+
+                return View("WithModel", person);
+            }
         }
     }
 }
