@@ -1,21 +1,23 @@
 ﻿@model FirstMVC.Models.COPY_EMP
 
-@{
-    Layout = null;
+@{ 
+    Layout = "~/Views/Shared/MyLayout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Employee</title>
-</head>
-<body>
-    <div> 
-        <h2>@Model.EMPLOYEE_ID</h2>
-        <p>@Model.FIRST_NAME</p>
-        <p>@Model.LAST_NAME</p>
-    </div>
-</body>
-</html>
+@section title{
+    Detail Employee
+}
+
+@section footer{
+    <hr />
+    <sub>&copy; Copyright</sub>
+}
+
+@section header{
+    lkjhadash
+}
+
+<h2>@Model.EMPLOYEE_ID</h2>
+<p>@Model.FIRST_NAME</p>
+<p>@Model.LAST_NAME</p>

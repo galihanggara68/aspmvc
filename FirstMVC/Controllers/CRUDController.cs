@@ -88,6 +88,17 @@ namespace FirstMVC.Controllers
         }
 
         [HttpPost]
+        [Route("cari/{id}")]
+        public ActionResult CariBarang(int id)
+        {
+            using(HREntities hr = new HREntities())
+            {
+                var employee = hr.COPY_EMP.Find(id);
+                return View("FormEdit", employee);
+            }
+        }
+
+        [HttpPost]
         [Route("employees/{id}/edit")]
         public ActionResult UpdateEmployee(int id, COPY_EMP employee)
         {

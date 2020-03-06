@@ -219,6 +219,7 @@
     <Content Include="Views\CRUD\Employee.cshtml" />
     <Content Include="Views\CRUD\FormEdit.cshtml" />
     <Content Include="Views\CRUD\EmployeeForm.cshtml" />
+    <Content Include="Views\Shared\MyLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
