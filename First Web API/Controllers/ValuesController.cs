@@ -29,6 +29,20 @@ namespace First_Web_API.Controllers
             return "value";
         }
 
+        [Route("getcount")]
+        public int GetCount()
+        {
+            return 10;
+        }
+
+        [Route("getdata")]
+        public HttpResponseMessage GetData()
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            response.Content = new StringContent("Hello");
+            return response;
+        }
+
         // POST api/values
         public void Post([FromBody]string value)
         {

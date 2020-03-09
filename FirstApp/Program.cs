@@ -300,15 +300,14 @@ namespace FirstApp
     {
         static void Main(string[] args)
         {
-            Query query = new Query();
-            var employee = query.GetOne(101);
+            DateTime dt = DateTime.Now.AddHours(5);
+            dt = dt.AddMinutes(56);
+            DateTime dif = new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 05);
 
-            Console.WriteLine("{0} {1} {2}", employee["employee_id"], employee["first_name"], employee["last_name"]);
+            Console.WriteLine(dt.ToString());
+            Console.WriteLine(dif.ToString());
 
-            //foreach(var employee in employees)
-            //{
-            //    Console.WriteLine("{0} {1} {2}", employee["employee_id"], employee["first_name"], employee["last_name"]);
-            //}
+            Console.WriteLine(dt.Minute == dif.AddMinutes(1).Minute);
 
             Console.ReadKey();
         }
